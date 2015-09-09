@@ -26,5 +26,7 @@ class MessageController < ApplicationController
     
     def reply # 답장보내는페이지
         @reply_message=Message.find(params[:id])
+        
+        @gd = "하이"
     end
 end
