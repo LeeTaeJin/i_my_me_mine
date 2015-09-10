@@ -97,6 +97,7 @@ class BookController < ApplicationController
             @reservation.start_time=@start_time
             @reservation.finish_time=@finish_time
             @reservation.purpose=params[:purpose]
+            @reservation.state="승인대기"
             @reservation.save
             
             redirect_to action:"view_booking", id: params[:id], show_date: params[:date]
