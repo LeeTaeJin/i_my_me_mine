@@ -6,8 +6,8 @@
 <div class="col-md-4"></div>
 
 <div class="col-md-4">
-  보내는 사람 : <%=@message.sender%><br><br>
-  받는 사람 : <%=@message.receiver%><br><br>
+  보내는 사람 : <%=User.find(@message.sender).student_name%> (<%=User.find(@message.sender).student_number%>)<br><br>
+  받는 사람 : <%=User.find(@message.receiver).student_name%> (<%=User.find(@message.receiver).student_number%>)<br><br>
   보낸 시간 : <%=@message.created_at%><br><br>
   내용 <br> <%=@message.content%><br><br>
   <center><a href="/message/main" class="btn btn-default">쪽지 메인으로 가기</a>

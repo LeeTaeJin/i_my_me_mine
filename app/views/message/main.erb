@@ -59,7 +59,7 @@
           <% @send_message.reverse.each do |m|%> <!--유저 디비를 생성하면 유저별로 메시지 출력해야되니까 user.messages.each do 하고 걸러줄것-->
           <tr>
             <td><%=m.id%></td>
-            <td><%=m.receiver%></td>
+            <td><%=User.find(m.receiver).student_name%></td>
             <td><%=m.created_at%></td>
             <td><%=m.content%></td>
             <td><a href="/message/read/<%=m.id%>" class="btn btn-default">쪽지보기</a></td>
