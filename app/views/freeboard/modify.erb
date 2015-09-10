@@ -10,12 +10,12 @@
     
       <p> 작성자 : <%= @one_fb.fb_name %></p> 
     <br>
-        <input type="text" name="md_title" placeholder="Title">
+        <input type="text" name="md_title" placeholder="Title" value = "<%= @one_fb.fb_title %>">
     <br>
     <br>
-        <textarea type="text" name="md_content"  placeholder="Content"></textarea>
+        <textarea type="text" name="md_content"  placeholder="Content"><%= @one_fb.fb_content %></textarea>
     <br>
-        <p><input type="password" name="md_passowrd" placeholder="Pw"> 비밀번호 입력해 </p>
+        <p><input type="password" name="md_passowrd" placeholder="Pw"> 비밀번호를 입력해주세요 </p>
     <br>
         <input type="submit" value="확인">
         <input type='hidden' name='id' value='<%= @id %>'>

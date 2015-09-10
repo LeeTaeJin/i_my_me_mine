@@ -9,7 +9,7 @@ background: rgba(255, 255, 255, 0.5);
 }
     </style>
 
-<body style="background-image:url('http://www.ucorean.com/files/attach/images/3959561/691/787/008/peaceful_summer_day-1920x1080.jpg'); background-size:cover;">
+<body>
 
 
     <div class="container">
@@ -39,8 +39,7 @@ background: rgba(255, 255, 255, 0.5);
                              
                                 <div class="<%= r.id %>">  
                                 
-                                    <p style="text-align:center"><h6>이름 : <%= r.rp_name %><br>내용 : <%= r.rp_content %> 
-                                    </h6> </p>
+                                    <p style="text-align:center"><h6> ------- <%= r.rp_name %>: <%= r.rp_content %> </h6> </p>
                                     
                                 </div>
                                 <div class="<%= r.id %>" style="display :none">
@@ -58,28 +57,28 @@ background: rgba(255, 255, 255, 0.5);
                                 </form>
                                 
                                 
-                                <button href="#" id="update_button<%= r.id %>">수정</button>
+                                <!--<button href="#" id="update_button<%= r.id %>">수정</button>-->
                                 
                             
-                                <script>
+                                <!--<script>-->
                                 
-                                    $(function(){
-                                        $("#update_button<%= r.id%>").click(function(){
-                                            //수정 버튼 클릭했을때
+                                <!--    $(function(){-->
+                                <!--        $("#update_button<%= r.id%>").click(function(){-->
+                                            <!--//수정 버튼 클릭했을때-->
                                          
-                                        <% if current_user.student_name == r.rp_name %>
+                                <!--        <%# if current_user.student_name == r.rp_name %>-->
                                             
-                                            $(".<%= r.id %>" ).show();
+                                <!--            $(".<%= r.id %>" ).show();-->
                                             
-                                        <% else %>
+                                <!--        <%# else %>-->
                                             
                                             
                                         
-                                        <% end %>
+                                <!--        <%# end %>-->
                                             
-                                            });
-                                    });
-                                </script>
+                                <!--            });-->
+                                <!--    });-->
+                                <!--</script>-->
                             <% end %>
                   
                           <br><br>

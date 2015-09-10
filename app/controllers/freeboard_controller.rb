@@ -4,8 +4,6 @@ class FreeboardController < ApplicationController
     def freeboards
        @fb_all = Freeboard.all
        
-       render layout: false
-       
     end
     # 게시판 홈 끝
     
@@ -21,7 +19,7 @@ class FreeboardController < ApplicationController
     # 글 작성 처리하는 페이지
     def write
         fb_update = Freeboard.new
-        fb_update.fb_name = params[:user_hakbun] + " / " + params[:user_name]
+        fb_update.fb_name =  params[:user_name]
         fb_update.fb_title = params[:user_title]
         fb_update.fb_content = params[:user_content]
         fb_update.fb_password = params[:user_passowrd]
@@ -36,7 +34,7 @@ class FreeboardController < ApplicationController
     def modify
         
         @id = params[:id]
-        
+      
         @one_fb = Freeboard.find(@id)
         
     end
@@ -128,8 +126,8 @@ class FreeboardController < ApplicationController
         
 
 
-        if rp_delete.rp_hakbun == current_user.student_number
-            
+        if rp_delete.rp_name == current_user.student_name   
+                    # 같은 이름을 가진 사람이 댓글을 삭제할수도 있으므로 학번으로 바꿔야함.
             
             rp_delete.destroy
             redirect_to :back
@@ -142,25 +140,25 @@ class FreeboardController < ApplicationController
     
     
     # 리플 수정
-    def reply_modify
-        #공 지 !
-        #수정 버튼을 누르면 content 부분에 수정할수 있게 그 부분만 바꿔줘야 하는 코드를 작성해야함!!
+    # def reply_modify
+    #     #공 지 !
+    #     #수정 버튼을 누르면 content 부분에 수정할수 있게 그 부분만 바꿔줘야 하는 코드를 작성해야함!!
         
-        reply_update = Reply.find(params[:rp_id])
+    #     reply_update = Reply.find(params[:rp_id])
         
         
         
-        if reply_update.rp_hakbun == current_user.student_number
+    #     if reply_update.rp_hakbun == current_user.student_number
             
-            reply_update.rp_content = params[:rp_content]
-            reply_update.save
-            redirect_to :back
-        else
+    #         reply_update.rp_content = params[:rp_content]
+    #         reply_update.save
+    #         redirect_to :back
+    #     else
             
-            redirect_to :back
-        end
+    #         redirect_to :back
+    #     end
         
-    end
+    # end
     # 리플 수정 
     
     

@@ -1,53 +1,69 @@
-	  <!--freeboard css-->    
-	<!--  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
-	<!--  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/hanna.css">-->
- <!--   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/jejugothic.css">-->
- <!--   <link rel="stylesheet" type="text/css" href="stylesheet.css">-->
-    <!--<link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/css/jquerysctipttop.css">-->
+	<!--freeboard css-->
 	
-	<!--<link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/css/jquerysctipttop.css">-->
-	<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
-	<!--<script src="/js/pagination.js"></script>-->
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/hanna.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/jejugothic.css">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/css/jquerysctipttop.css">
+	
+	<link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/css/jquerysctipttop.css">
 
-// 	<script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+ 	<script>
     
-// 	$(function () {
-// 			load = function() {
-// 				window.tp = new Pagination('#tablePaging', {
-// 					itemsCount: <#= @fb_all.count %>,
-// 					onPageSizeChange: function (ps) {
-// 						console.log('changed to ' + ps);
-// 					},
-// 					onPageChange: function (paging) {
-// 						//custom paging logic here
-// 						console.log(paging);
-// 						var start = paging.pageSize * (paging.currentPage - 1),
-// 							end = start + paging.pageSize,
-// 							$rows = $('#table').find('.data');
+	$(function () {
+			load = function() {
+				window.tp = new Pagination('#tablePaging', {
+					itemsCount: <#= @fb_all.count %>,
+					onPageSizeChange: function (ps) {
+						console.log('changed to ' + ps);
+					},
+					onPageChange: function (paging) {
+						//custom paging logic here
+						console.log(paging);
+						var start = paging.pageSize * (paging.currentPage - 1),
+							end = start + paging.pageSize,
+							$rows = $('#table').find('.data');
 
-// 						$rows.hide();
+						$rows.hide();
 
-// 						for (var i = start; i < end; i++) {
-// 							$rows.eq(i).show();
-// 						}
-// 					}
-// 				});
-// 			}
+						for (var i = start; i < end; i++) {
+							$rows.eq(i).show();
+						}
+					}
+				});
+			}
 
-// 		load();
-// 	});
-// 	</script>
+		load();
+	});
+ 	</script>
 	</head>
 	
-<body style="background-image:url('http://www.ucorean.com/files/attach/images/3959561/691/787/008/peaceful_summer_day-1920x1080.jpg'); background-size:cover;"><br>
+<!--<body style="background-image:url('http://www.ucorean.com/files/attach/images/3959561/691/787/008/peaceful_summer_day-1920x1080.jpg'); background-size:cover;"><br>-->
 
-        
-<div class="container">
-    <font size="10px" color="white">GameSchool</font>
+<div class="containter"><!--풋터를 위한 디브-->
+<div class="row">
+
+<div class="well">
+  <center>공지사항 게시판<br>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+<div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><center>공지사항</center></h3>
+      </div>
+      <div class="panel-body">
+  
+  <!--게시판-->
+
+  <!--<div class="container">-->
      <div class="jumbotron" style="width:600px height:600px">
       <form id="form1">
-        <table class="table table-condensed" id="table" style="padding-top:1px; padding-bottom:1px; background:rgba(40,40,40,0.7); align:center">
-        <font1><font size="20px">Freeboard</font></font1>
+        <table class="table table-condensed" id="table" style="padding-top:1px; padding-bottom:1px; background:rgba(0,0,0,0); align:center">
+        
           <tr>
             <th style="text-align: center">Num </th>
             <th style="text-align: center">글쓴이 </th>
@@ -70,7 +86,37 @@
             <% end %>
         </table>
         <% if user_signed_in? %>
-            <p align="right"><a href="/freeboard/upload">작성하기</a></p>
+                 <% if current_user.email == 'admin@ptu.ac.kr' %>
+                    <p align="right"><a href="/freeboard/upload">작성하기</a></p>
+                  <% else %>
+                  
+                    <input type ="button" id = "writeadmin" value = "작성하기"></input>
+                                       
+                    <script type="text/javascript"> 
+                      $(function() {
+                          $("#writeadmin").click(function() {
+                              $("#dialog").dialog({
+                                  title: "알림",
+                              
+                                  width: 300,               //dialog
+                                  height: 200,
+                                  modal: true,
+                                  buttons: {
+                                      Close:
+                                      function() {
+                                          $("#dialog").dialog('close');
+                                      }
+                                  }
+                              });
+                          });
+                      })
+                  </script>
+                    
+                    <div id="dialog" title="Basic dialog" style="display :none">
+                         관리자가 아닙니다.
+                     </div>
+                      
+                  <% end %>
         <% else %>
             <p align="right"><a href="/freeboard/warning">작성하기</a></p>
         <% end %>
@@ -78,7 +124,15 @@
         <div style="clear: both;"></div>
       </form>
     </div>
-    
+
+
+  
+</div><!--패널-->
+</div><!--전체패널-->
+</div>
+
+
+   
     <script type="text/javascript">
     
       var _gaq = _gaq || [];
@@ -93,6 +147,10 @@
       })();
     
     </script>
+
+</div>
+</div>
+	
 	
 </body>
 </html>
