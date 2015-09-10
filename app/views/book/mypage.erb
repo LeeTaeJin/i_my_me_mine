@@ -1,6 +1,6 @@
 <h1> 마이페이지 </h1>
 <p>성 명 : <%= current_user.student_name%><p>
-<p>학 번 : <%#= current_user.student_number %><p>
+<p>학 번 : <%= current_user.student_number %><p>
 <p>학 과 : <%#= current_user.department %><p>
 <p>나의 예약 수 : <%= Reservation.where(user: current_user.id).count %><p>
 <p>승인 대기중 : <%#= current_user.department %><p>
