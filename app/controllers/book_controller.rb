@@ -122,6 +122,8 @@ class BookController < ApplicationController
             
     end
     
+    
+    
     def mypage
       
     end
@@ -151,11 +153,7 @@ class BookController < ApplicationController
       
         end
     end    
-    
-    def test
-        @a="ㅅㅂ"
-    end
-   
+
     
     
 end

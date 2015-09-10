@@ -32,7 +32,13 @@
   <!--  </div>-->
     
   <!--  <div class="panel-body">-->
+      
         <ul class="list-group" style="padding-top:50px">
+          <li class="list-group-item">
+            <center>
+              <h4>한눈에 보는 예약현황</h4>
+            </center>
+          </li>
         <% if @class.reservations.where(date: @date).count==0%>
           <li class="list-group-item">
             <center>
@@ -151,11 +157,11 @@
   <table class="table table-striped table-hover ">
     <thead>
       <tr class="info">
-        
+        <th>#</th>
         <th>사용자 이름</th>
         <th>사용날짜</th>
         <th>사용시간</th>
-        <th></th>
+        <th>승인현황</th>
         <th></th>
       </tr>
     </thead>
@@ -168,71 +174,79 @@
             <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
             
             <td>
+              <span class="label label-info"  id="view_state<%=c.id%>"><%=c.state%></span>
+              
               <% if current_user %> <!--로그인 된 상태.-->
                       
                 <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
-                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
                   
                   <% if c.state=="승인대기" %>
-                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
+                    <input onclick="change(<%=c.id%>)" type="button" value="승인하기" id="button<%=c.id%>"></input>
+                    <!--<button type="button" class="btn btn-primary btn-sm" id="button" onclick="change()" >승인하기</button>-->
+                    
                   <% else %>
-                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
+                    <input onclick="change(<%=c.id%>)" type="button" value="승인취소" id="button<%=c.id%>"></input>
+                    <!--<button type="button" class="btn btn-primary btn-sm" id="button<=c.id%>" onclick="change()">승인취소</button>-->
                   <!--<input class="btn btn-primary btn-sm" onclick="change()" value="승인하기" id="<=c.id%>"></input>-->
+                    
                   <%end%>
                                 
                 <% end %>
               <%end%>
                     
-<script>
-   function change(){                             
-// $(function() {  
-                                	     
-  // $("#button%=c.id%>").click(function change(){                 
-
-    var view_state = document.getElementById("view_state<%=c.id%>");
-    var button = document.getElementById("button<%=c.id%>");
-    alert("view_state<%=c.id%>  ;  button<%=c.id%>"  );
-      <% if c.state == "승인대기" %> 
-      // 승인대기상태라면 버튼눌렀을때 승인완료로 바뀜
-        <% @state_change=Reservation.find(c.id)
-           @state_change.state="승인완료"
-           @state_change.save %> //db에 저장
-           
-           view_state.innerHTML="<%=c.state%>"; //상태표시를 바꿔줌
-           button.innerHTML="승인취소"; //버튼의값을 일시적으로 바꿔줌
-           
-      <% else %>//승인취소시
-        <% @state_change=Reservation.find(c.id)
-           @state_change.state="승인대기"
-           @state_change.save %> //db에 저장
-           
-           view_state.innerHTML="<%=c.state%>"; //상태표시를 바꿔줌
-           button.innerHTML="승인하기"; //버튼의값을 일시적으로 바꿔줌
-      <%end%>
-  // });s
-};
-</script>
-                 </td>
+            </td>
                
-            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
+            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button>
             
             <% if current_user %>
                <% if User.find(c.user).id == current_user.id %>
-                <!--예약취소는 사용자만 가능하게! 관리자가 안된다고 생각하면 삭제 말고 승인 거부하면된다-->
-                <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show_check<%=c.id%>" >예약 취소</button></td>
-               <% else %>
-                 
+                  <!--예약취소는 사용자만 가능하게! 관리자가 안된다고 생각하면 삭제 말고 승인 거부하면된다-->
+                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show_check<%=c.id%>" >예약 취소</button></td>
                <%end%>
-            <% else %>
-            
+               
             <% end %>
-            
+            </td>
           </tr>
 
       <% end %>
     </tbody>
   </table> 
 </div>
+
+<script>
+
+  function change(reservation_id){
+        var button="button" + reservation_id;
+        var view_state="view_state" + reservation_id;
+        
+        // alert(button);
+        // alert(view_state);
+        // // % @reservation %> = reservation_id
+        // alert(reservation_id)
+        // < @reservation = reservation_id %>
+        
+        if document.getElementById(view_state).value == "승인대기"//승인대기라면
+          //상태표시 바꾸고 버튼 텍스트도 바꿔줘야한다 db도!
+          document.getElementById(view_state).innerHTML="승인완료";
+          document.getElementById(button).value="승인취소";
+          
+          
+          // % @change_state=Reservation.find(reservation.id)
+          //   @change_state.state="승인완료"
+          //   @change_state.save %>
+             
+        else
+          document.getElementById(view_state).innerHTML="승인대기";
+          document.getElementById(button).value="승인하기";
+          
+          // % @change_state=Reservation.find(@reservation_id)
+          //   @change_state.state="승인대기"
+          //   @change_state.save %>
+        
+  };
+
+</script>
+
 
 
 <% @class.reservations.where(date: @date).each do |c| %><!--예약취소 모달-->
