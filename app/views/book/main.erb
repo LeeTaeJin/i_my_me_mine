@@ -1,11 +1,10 @@
-<div class="well">
-  <center>
-    오늘의 예약 건수 : <span class="badge"><%=Reservation.where(date: Time.zone.today).count%></span>
-    <br>현재시간 : <%=Time.zone.now%> / <%=Time.zone_offset('Seoul')%>
-    <br>예약할 강의실을 선택해주세요.
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>오늘의 예약 건수 : <span class="badge"><%=Reservation.where(date: Time.zone.today).count%></span>
+    <br>현재시간 : <%=Time.zone.now.to_s(:default)%> <%#=Time.zone_offset('Seoul')%>
+    <br>예약할 강의실을 선택해주세요.<br>
   </center>
 </div>
-
+<br>
 
 <!--<div class="col-md-6">-->
 <!--    <div class="panel panel-info">-->
@@ -59,27 +58,20 @@
   <div class="row">
     <div class="col-md-7">
       <center>
-      <img src="http://www.ptu.ac.kr/ptu/include/img/contents/campus_map/campus_map_s.jpg">
+        <img src="http://www.ptu.ac.kr/ptu/include/img/contents/campus_map/campus_map_s.jpg">
       </center>
     </div>
   
-    <div class="col-md-5">
-        <!--<div class="panel panel-info">-->
-        <!--  <div class="panel-heading">-->
-        <!--    <h3 class="panel-title"><center>예약할 강의실을 선택해주세요</center></h3>-->
-        <!--  </div>-->
-        <!--  <div class="panel-body">-->
-            
-            <% @building.each do |b| %>
-            
-            <a href="/book/detail_info/<%=b.id%>" class="btn btn-success" style="margin-bottom:10px"><%=b.name%></a><br>
-            
-            <%end%>
-            
+    <div class="col-md-5">           
+      <% @building.each do |b| %>
+      
+      <a href="/book/detail_info/<%=b.id%>" class="btn btn-success" style="margin-bottom:10px; text-align: center; font-size: 18px;" id="menu_font"><%=b.name%></a><br>
+      
+      <%end%>            
     </div>
 
   </div>
 </div>
 
-<br><br><br>
+<br><br><br><br><br>
 

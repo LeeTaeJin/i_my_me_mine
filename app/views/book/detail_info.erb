@@ -1,12 +1,19 @@
-<div class="well">
-  <center><strong><%=@building.name%></strong>에 대한 강의실 정보입니다.</center>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>'<%=@building.name%>'에 대한 예약 가능한 강의실 정보입니다.</center>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <center>
+    <% @class_list.each do |c| %>
+    <!--층별로 나눠주는 코드 작성할것 -->
+     
+        <a href="/book/view_booking?id=<%=c.id%>&show_date=<%=Time.zone.today%>" class="btn btn-success" style="margin-bottom:10px; text-align: center; font-size: 18px;" id="menu_font"><%=c.room_number%>호</a> 
+    
+    <%end%>
+    </center>
+  </div>
 </div>
 
-<center>
-<% @class_list.each do |c| %>
-<!--층별로 나눠주는 코드 작성할것 -->
- 
-    <a href="/book/view_booking?id=<%=c.id%>&show_date=<%=Time.zone.today%>" class="btn btn-default" style="margin-bottom:10px"><%=c.room_number%>호</a> 
-
-<%end%>
-</center>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
