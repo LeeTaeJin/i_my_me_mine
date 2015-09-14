@@ -85,20 +85,22 @@
                         <td  style="text-align :center; font-size: 18px;" id="menu_font_t"> <p style = "color:black">  (<%= a.replies.count %>) </p> </td>
 
                     <% else %>    
-                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><a href="/freeboard/warning"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><a href="/users/sign_in"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
                     <% end %>
                         <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><%=a.created_at.in_time_zone("Seoul")%></td>
                 </tr>
             <% end %>
         </table>
-        <% if user_signed_in? %>
+        
+        <% if user_signed_in? %>            
                  <% if current_user.email == 'admin@ptu.ac.kr' %> <br>
                     <a href="/freeboard/upload"><input type = "button"  class="btn btn-primary btn-sm" style="font-size: 18px;" id="menu_font" value = "작성하기"></input></a>
                   <% else %>
                     <br>
-                    <input class="btn btn-primary" type ="button" style="font-size: 18px;" id="menu_font" id = "writeadmin" value = "작성하기"></input>
+                    <input class="btn btn-primary" type ="button" style="font-size: 18px;" id="writeadmin" id = "menu_font" value = "작성하기"></input>
                                        
                     <script type="text/javascript"> 
+                     
                       $(function() {
                           $("#writeadmin").click(function() {
                               $("#dialog").dialog({
@@ -115,16 +117,17 @@
                                   }
                               });
                           });
-                      })
+                      });
                   </script>
                     
-                    <div id="dialog" title="Basic dialog" style="display :none">
-                         관리자가 아닙니다.
-                     </div>
+                    <div id="dialog" id = "menu_font_t" title="Basic dialog" style="display :none">
+                        * 관리자가 아닙니다. <br>
+                         (관리자에게만 권한이 있습니다.)
+                    </div>
                       
                   <% end %>
         <% else %>
-          <a href="/freeboard/upload"><input type = "button"  class="btn btn-primary btn-sm"  value = "작성하기"></input></a>
+         <!-- 로그인 창으로 넘어간다. -->
         <% end %>
         <div class="paging-container" id="tablePaging"> </div>
         <div style="clear: both;"></div>
@@ -139,20 +142,20 @@
 
 
    
-    <script type="text/javascript">
+    <!--<script type="text/javascript">-->
     
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-36251023-1']);
-      _gaq.push(['_setDomainName', 'jqueryscript.net']);
-      _gaq.push(['_trackPageview']);
+    <!--  var _gaq = _gaq || [];-->
+    <!--  _gaq.push(['_setAccount', 'UA-36251023-1']);-->
+    <!--  _gaq.push(['_setDomainName', 'jqueryscript.net']);-->
+    <!--  _gaq.push(['_trackPageview']);-->
     
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    <!--  (function() {-->
+    <!--    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;-->
+    <!--    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';-->
+    <!--    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);-->
+    <!--  })();-->
     
-    </script>
+    <!--</script>-->
 
 </div>
 </div>
