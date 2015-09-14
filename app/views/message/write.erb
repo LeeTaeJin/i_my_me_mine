@@ -1,23 +1,28 @@
-<div class="well">
-  <center>쪽지 쓰는 페이지입니당</center>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+<center>관리자에게 요구사항 및 전달사항을 작성한 후 아래의 전송하기 버튼을 눌러 쪽지를 보내주세요.<br>
+(Cancel 버튼을 클릭시 메시지 관리 페이지로 이동합니다)</center>
 </div>
+<br>
 
 
-<div class="col-md-4"></div>
-<div class="col-md-4">
+<div class="container">
+<div class="row">
+
+<div class="col-md-2"></div>
+<div class="col-md-8">
   <form class="form-horizontal" action="/message/write_process" method="POST">
     <fieldset>
        <div class="form-group">
-        <label for="inputprofessor" class="col-lg-2 control-label">보내는 사람</label>
+        <label for="inputprofessor" class="col-lg-2 control-label" style="font-size: 20px; height: 39px;" id="menu_font">보내는 사람</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="sender" value="<%=current_user.student_name%>" disabled>
+          <input type="text" class="form-control" name="sender" style="font-size: 18px;" id="menu_font_t" value="<%=current_user.student_name%>" disabled>
         </div>
       </div>
     
       <div class="form-group">
-        <label for="select" class="col-lg-2 control-label">받는사람</label>
+        <label for="select" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">받는사람</label>
         <div class="col-lg-10">
-          <select class="form-control" id="select" name="receiver" required>
+          <select class="form-control" id="select" name="receiver" style="font-size: 18px; height: 39px;"  id="menu_font_t" required>
               <% User.all.each do |u| %>
                 <option><%=u.student_name%> (<%=u.student_number%>)</option>
                 <input type="hidden" name="receiver_id" value="<%=u.id%>">
@@ -28,19 +33,26 @@
       </div>
       
       <div class="form-group">
-        <label for="inputpurpose" class="col-lg-2 control-label">내용</label>
+        <label for="inputpurpose" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">내용</label>
         <div class="col-lg-10">
-            <textarea class="form-control" rows="3" name="content" required></textarea>
+            <textarea class="form-control" rows="3" name="content" style="font-size: 18px;" id="menu_font_t" required></textarea>
         </div>
       </div>
      
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
-          <button type="reset" class="btn btn-default">Cancel</button>
-          <button type="submit" class="btn btn-primary">쪽지보내기</button>
+          <a href="/message/main" class="btn btn-default" style="text-align: center; font-size: 18px;" id="menu_font">Cancel</a>
+          <!--<button type="reset" class="btn btn-default"  style="font-size: 18px" id="menu_font">Cancel</button>-->
+          <button type="submit" class="btn btn-primary"  style="font-size: 18px" id="menu_font">쪽지 보내기</button>
+          
         </div>
       </div>
     </fieldset>
   </form>
 </div>
-<div class="col-md-4"></div>
+<div class="col-md-2"></div>
+
+</div>
+</div>
+
+<br><br><br><br><br><br>

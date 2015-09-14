@@ -1,18 +1,37 @@
-<div class="well">
-  <center>쪽지 상세 보기 페이지입니당</center>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>보낸 메시지 내용이 확인 가능합니다.<br>
+  메시지 확인페이지로 돌아가려면 아래의 메인으로가기 버튼을 눌러주세요.</center>
 </div>
+<br>
 
+<div class="container">
+<div class="row">
 
 <div class="col-md-4"></div>
 
 <div class="col-md-4">
-  보내는 사람 : <%=User.find(@message.sender).student_name%> (<%=User.find(@message.sender).student_number%>)<br><br>
-  받는 사람 : <%=User.find(@message.receiver).student_name%> (<%=User.find(@message.receiver).student_number%>)<br><br>
-  보낸 시간 : <%=@message.created_at%><br><br>
-  내용 <br> <%=@message.content%><br><br>
-  <center><a href="/message/main" class="btn btn-default">쪽지 메인으로 가기</a>
-          <a href="/message/write" class="btn btn-default">답장보내기</a></center>
+  <div id="menu_font" style="font-size: 20px;">보내는 사람 : </div>
+  <div id="menu_font_t" style="font-size: 18px;"><%=User.find(@message.sender).student_name%> (<%=User.find(@message.sender).student_number%>)<br><br>
+  </div>
   
+  <div id="menu_font" style="font-size: 20px;">받는 사람 : </div>
+  <div id="menu_font_t" style="font-size: 18px;"><%=User.find(@message.receiver).student_name%> (<%=User.find(@message.receiver).student_number%>)<br><br>
+  </div>
+  
+  <div id="menu_font" style="font-size: 20px;">보낸 시간 : </div>
+  <div id="menu_font_t" style="font-size: 18px;"><%=@message.created_at%><br><br>
+  </div>
+  
+  <div id="menu_font" style="font-size: 20px;">내용 :</div>
+  <div id="menu_font_t" style="font-size: 18px;"><%=@message.content%><br><br><br>
+  </div>
+  
+  <center><a href="/message/main" class="btn btn-primary btn-sm" style="text-align: center; font-size: 18px;" id="menu_font">메인으로 가기</a>
+          <a href="/message/write" class="btn btn-primary btn-sm" style="text-align: center; font-size: 18px;" id="menu_font">답장보내기</a></center>
 </div>
 
 <div class="col-md-4"></div>
+
+</div></div>
+
+<br><br><br><br><br><br><br>

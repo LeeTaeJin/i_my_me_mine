@@ -4,7 +4,6 @@ class MessageController < ApplicationController
     
     def main #나에게 받은 메시지/보낸메시지 출력
  
-        
         @receive_message=Message.where(receiver: current_user.id)#내가 받은 메시지
         @send_message=Message.where(sender: current_user.id) #내가 보낸 메시지
     end
