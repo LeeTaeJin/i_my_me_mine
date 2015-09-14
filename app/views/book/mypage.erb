@@ -12,7 +12,7 @@
         <center>
         <p style = "font-size:22px;" id = "menu_font">성 명 : <%= current_user.student_name%></p>
         <p style = "font-size:22px;" id = "menu_font">학 번 : <%= current_user.student_number %></p>
-        <p style = "font-size:22px;" id = "menu_font">학 과 : <%#= current_user.department %></p>
+        <p style = "font-size:22px;" id = "menu_font">학 과 : <%= current_user.department %></p>
         <p style = "font-size:22px;" id = "menu_font">나의 예약 수 : <%= Reservation.where(user: current_user.id).count %></p>
         <p style = "font-size:22px;" id = "menu_font">승인 대기중 : <%#= current_user.department %></p>
         <p style = "font-size:22px;" id = "menu_font">승인 완료 : <%#= current_user.department %></p>
@@ -27,7 +27,6 @@
               <div class="collapse" id="user_menu" >
                 <ul class="list-group">
                   <a href="/users/edit" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;회원 정보 수정</a>
-                  <a href="/users(.:format)" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;회원 탈퇴</a>
                 </ul>
               </div> <br>
               
@@ -42,7 +41,7 @@
               <a href="#message_menu" class="list-group-item alert alert-warning" data-toggle="collapse" id = "menu_font_t"><center>나의 문의함</center></a>
                 <div class="collapse" id="message_menu" >
                   <ul class="list-group">
-                    <a href="#" id="all_message" class="list-group-item" id = "menu_font_t">통합 메일함</a>
+                    <a href="#" id="all_message" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;통합 메일함</a>
                     <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;내가 보낸 문의</a>
                     <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;내가 받은 답장</a>
                   </ul>

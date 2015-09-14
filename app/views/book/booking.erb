@@ -1,82 +1,86 @@
-
-
-<div class="well">
-  <center><strong><%=@class.room_number%>호</strong>대여 신청서를 작성해주세요  <%=Time.zone.now%> </center>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>현재시간 : <%=Time.zone.now.to_s(:default)%><br>
+  '<%=@class.room_number%>호' 대여 신청서를 작성해주세요.</center>
 </div>
+<br>
 
 <div class="container">
 <div class="row">
 
-<div class="col-md-4"></div>
-<div class="col-md-4">
+<center>
   <form class="form-horizontal" action="/book/booking_process/<%=@class.id%>" method="POST">
-    <fieldset>
+    <!--<fieldset>-->
        <div class="form-group">
-        <label for="inputprofessor" class="col-lg-2 control-label">사용자</label>
+        <label for="inputprofessor" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">사용자</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="user" value="<%=current_user.email%>" disabled>
+          <input type="text" class="form-control" name="user" style="font-size: 20px;" id="menu_font_t" value="<%=current_user.email%>" disabled>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="inputprofessor" class="col-lg-2 control-label">지도교수</label>
+        <label for="inputprofessor" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">지도 교수</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="professor" required>
+          <input type="text" class="form-control" name="professor" style="font-size: 20px;" id="menu_font_t" required>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="inputdate" class="col-lg-2 control-label">사용날짜</label>
+        <label for="inputdate" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">사용 날짜</label>
         <div class="col-lg-10">
-          <input type="date" class="form-control" name="date" required>
+          <input type="date" class="form-control" name="date" style="font-size: 20px;" id="menu_font_t" required>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="inputtime" class="col-lg-2 control-label">사용시간</label>
+        <label for="inputtime" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">사용 시간</label>
         <div class="col-lg-10">
-          <div class="col-lg-5" style="padding-left: 0px;padding-right: 0px;">
-            <input type="time" class="form-control" name="start_time" required style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;width: 105px;">  
+          <div class="col-lg-5">
+            <input type="time" class="form-control" name="start_time" required style="width: 200px; font-size: 20px;" id="menu_font_t">  
           </div>
-          <div class="col-lg-1" style="padding-left: 0px;padding-right: 15px;">
+          <div class="col-lg-1">
             <center>~</center>
           </div>
-          <div class="col-lg-5" style="padding-left: 0px;padding-right: 0px;">
-            <input type="time" class="form-control" name="finish_time" required style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;width: 105px;"> 
+          <div class="col-lg-5">
+            <input type="time" class="form-control" name="finish_time" required style="width: 200px; font-size: 20px;" id="menu_font_t"> 
           </div>
         </div>
         
       </div>
       
       <div class="form-group">
-        <label for="inputpurpose" class="col-lg-2 control-label">사용목적</label>
+        <label for="inputpurpose" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">사용 목적</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="purpose" required>
+          <input type="text" class="form-control" name="purpose" style="font-size: 20px;" id="menu_font_t" style="width: 105px; font-size: 20px;" id="menu_font_t"required>
         </div>
       </div>
       
       <div class="form-group">
-        <label for="select" class="col-lg-2 control-label">대여시 주의사항</label>
+        <label for="select" class="col-lg-2 control-label" style="font-size: 20px;" id="menu_font">예약시 주의사항</label>
         <div class="col-lg-10">
-          <div style="overflow:auto; width:500px; height:150px;">
-            사용약관입니다.<br>
+          <div style="overflow:auto; width:500px; font-size: 18px;" id="menu_font">
+            <br>사용약관입니다.<br>
             [1] 기물파손이나 낙서 등의 피해가 확인되었을 경우에는 불이익이 적용됩니다. <br>
-            등등...
-          </div>
-          <input type="checkbox" required> 동의합니다.
-        </div>
+            [2]
+            [3]
+            [4]
+          <br><br>
+         
+          </div><br><br><br><br>
+           <input type="checkbox" style="font-size: 20px;" id = "menu_font" required> 동의합니다.<br><br>
+      </div>
+      
       </div>
       
       <div class="form-group">
-        <div class="col-lg-10 col-lg-offset-2">
-          <a href="/book/view_booking/<%=@class.id%>&show_date=<%=@date%>"><button type="submit" class="btn btn-default">Cancel</button></a>
-          <button type="submit" class="btn btn-primary" id="suc">작성 완료</button>
+        <div class="col-lg-10 col-lg-offset-2"  id ="menu_font">
+          <a href="/book/view_booking/<%=@class.id%>&show_date=<%=@date%>"><button type="submit" class="btn btn-default" style="font-size: 18px">Cancel</button></a>
+            <button type="submit" class="btn btn-primary" id="suc" style="font-size: 18px">작성 완료</button>
         </div>
       </div>
       
-    </fieldset>
+    <!--</fieldset>-->
   </form>
-</div>
+</center>
 
 <script>
   $(function() {
@@ -95,19 +99,21 @@
     
 <% end %>
 
-<div class="col-md-4"></div>
+<!--<div class="col-md-4"></div>-->
 
-<p>
-만약 102호를 클릭하고 예약하기를 클릭하면<br> 
-예약하는 호수는 102호로 한정하기<br>
-<br>
-그리고 신청 양식이 있다<br>
-사용목적, 사용시간, 깨끗히 사용할 것이며 만약 기물파손시 배상한다는 뭐 그런 서약?(사용약관)<br>
-<br>
-만약 현재예약되어있는 시간이랑 사용자가 기입한 사용시간이 같으면 경고가 뜨고 다시 폼양식으로 redirect 한다.<br>
-예약 완료시 예약완료ㅇ되었다는 alert뜸
-</p>
+<!--<p>-->
+<!--만약 102호를 클릭하고 예약하기를 클릭하면<br> -->
+<!--예약하는 호수는 102호로 한정하기<br>-->
+<!--<br>-->
+<!--그리고 신청 양식이 있다<br>-->
+<!--사용목적, 사용시간, 깨끗히 사용할 것이며 만약 기물파손시 배상한다는 뭐 그런 서약?(사용약관)<br>-->
+<!--<br>-->
+<!--만약 현재예약되어있는 시간이랑 사용자가 기입한 사용시간이 같으면 경고가 뜨고 다시 폼양식으로 redirect 한다.<br>-->
+<!--예약 완료시 예약완료ㅇ되었다는 alert뜸-->
+<!--</p>-->
 
 
 </div>
 </div>
+
+<br><br><br><br><br><br><br>

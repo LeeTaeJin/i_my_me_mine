@@ -1,6 +1,6 @@
 <div class="well" id="menu_font" style="font-size: 20px;" >
   <center>오늘의 예약 건수 : <span class="badge"><%=Reservation.where(date: Time.zone.today).count%></span>
-    <br>현재시간 : <%=Time.zone.now.to_s(:default)%> <%#=Time.zone_offset('Seoul')%>
+    <br>현재시간 : <%=Time.zone.now.to_s(:datetime)%> <%#=Time.zone_offset('Seoul')%>
     <br>예약할 강의실을 선택해주세요.<br>
   </center>
 </div>

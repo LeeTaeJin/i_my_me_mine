@@ -143,13 +143,13 @@
     </thead>
     <tbody>
       <% @class.reservations.where(date: @date).order(:start_time).each do |c| %>
-          <tr style="text-align: center; font-size: 18px;" id="menu_font">
+          <tr>
            
-            <td><%=User.find(c.user).email %></td>
+            <td style="font-size: 18px;" id="menu_font"><%=User.find(c.user).email %></td>
             <!--<td><%#=c.date%></td>-->
-            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
-            
-            <td>
+            <td style="font-size: 18px;" id="menu_font"><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+
+            <td style="font-size: 18px;" id="menu_font">
                 <% if current_user %> <!--로그인 된 상태.-->
                         
                       <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
@@ -219,6 +219,7 @@
                 
                 <% end %>
             </td>
+
           </tr>
 
       <% end %>
@@ -294,7 +295,8 @@
     </div>
   </div>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <%end%>
 
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
