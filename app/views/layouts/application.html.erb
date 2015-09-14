@@ -59,12 +59,7 @@
                       
                        <% if current_user %> <!-- 로그인이 되어있고 -->
                           <% if current_user.email == "admin@ptu.ac.kr" %>
-                      <li>
-<<<<<<< HEAD
-                          <a id="condition2" class="page-scroll" href="#" style="margin-top: 17px; font-size:20px;" data-toggle="modal" data-target="#condition">예약현황(X)</a>
-                          
-                      </li>   
-=======
+                      
                           <a id="condition2" class="page-scroll" href="/book/condition" style="margin-top: 17px; font-size:20px;">예약현황(X)</a>
                           
                       </li>
@@ -74,7 +69,7 @@
                       <% else %>
                       
                       <% end %>
->>>>>>> 5d89192124abb175e6207022e2f7744311b208b7
+
                       <li class="page-scroll">
                           <% if current_page?(controller: 'book', action: 'real_main') %>        
                           <a id="11" class="scroll-down1" href="#bottom" style="margin-top: 17px; font-size:20px;">문의하기</a>
@@ -161,64 +156,6 @@
       <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   
   
-<<<<<<< HEAD
-  
-  <% if current_user %>
-    <% if current_user.email == "admin@ptu.ac.kr" %>
-    
-    <% else %>
-    
-      <div id="condition" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">   <!-- 예약현황 모달 -->
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel">예약현황</h4>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="recipient-name" class="control-label">관리자가 아닙니다</label>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    
-  <% elsif current_user.nil? %>
-    <div id="condition" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">   <!-- 예약현황 모달 -->
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel">예약현황</h4>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <label for="recipient-name" class="control-label">로그인이 필요합니다.</label>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  <% end %>
-  
-  
-  
-=======
-
-   
-
-
->>>>>>> 5d89192124abb175e6207022e2f7744311b208b7
   </body>
 </html>
 
