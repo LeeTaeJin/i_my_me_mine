@@ -1,66 +1,66 @@
-<<<<<<< HEAD
-<h1> 마이페이지 </h1>
-<p>성 명 : <%= current_user.student_name%><p>
-<p>학 번 : <%= current_user.student_number %><p>
-<p>학 과 : <%#= current_user.department %><p>
-<p>나의 예약 수 : <%= Reservation.where(user: current_user.id).count %><p>
-<p>승인 대기중 : <%#= current_user.department %><p>
-<p>승인 완료 : <%#= current_user.department %><p>
-=======
 
-<div class="row" >
-  <div class="col-md-3" style="padding-left:30px" align="right">
-    <div class="list-group" >
-      <a href="#user_menu" class="list-group-item" data-toggle="collapse">회원 정보 관리</a>
-      
-      <div class="collapse" id="user_menu" >
-        <ul class="list-group">
-          <a href="/users/edit" class="list-group-item">회원 정보 수정</a>
-          <a href="/users(.:format)" class="list-group-item">회원 탈퇴</a>
-        </ul>
-      </div>
-      
-      <a href="#reservation_menu" class="list-group-item" data-toggle="collapse">예약 현황 관리</a>
-        <div class="collapse" id="reservation_menu" >
-          <ul class="list-group">
-            <a href="#" class="list-group-item">승인 대기 예약</a>
-            <a href="#" class="list-group-item">승인 완료 예약</a>
-          </ul>
-        </div>
-      
-      <a href="#message_menu" class="list-group-item" data-toggle="collapse">나의 문의함</a>
-        <div class="collapse" id="message_menu" >
-          <ul class="list-group">
-            <a href="#" id="all_message" class="list-group-item">통합 메일함</a>
-            <a href="#" class="list-group-item">내가 보낸 문의</a>
-            <a href="#" class="list-group-item">내가 받은 답장</a>
-          </ul>
-        </div>
+<div class="well" id="menu_font" style="font-size: 20px">
+  <center>가입한 회원 정보 확인 및 예약 현황을 보여주는 페이지 입니다.<br>
+</div>
+
+<br><br>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-6" style="background-image: url(http://notice-chohyejin.c9.io/img/pit.png); height: 340px; width: 400px">
+     <p style = "font-size:40px;" id = "menu_font"> &nbsp;&nbsp; <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> &nbsp; My page</p>
+        <center>
+        <p style = "font-size:22px;" id = "menu_font">성 명 : <%= current_user.student_name%></p>
+        <p style = "font-size:22px;" id = "menu_font">학 번 : <%= current_user.student_number %></p>
+        <p style = "font-size:22px;" id = "menu_font">학 과 : <%#= current_user.department %></p>
+        <p style = "font-size:22px;" id = "menu_font">나의 예약 수 : <%= Reservation.where(user: current_user.id).count %></p>
+        <p style = "font-size:22px;" id = "menu_font">승인 대기중 : <%#= current_user.department %></p>
+        <p style = "font-size:22px;" id = "menu_font">승인 완료 : <%#= current_user.department %></p>
+        </center>
+    </div>
+    
+    <div class= "col-md-4 col-md-offset-2">
+        <br><br><br>
+            <div class="list-group" >
+              <a href="#user_menu" class="list-group-item alert alert-warning" data-toggle="collapse" id = "menu_font_t"><center>회원 정보 관리</center></a>
+              
+              <div class="collapse" id="user_menu" >
+                <ul class="list-group">
+                  <a href="/users/edit" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;회원 정보 수정</a>
+                  <a href="/users(.:format)" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;회원 탈퇴</a>
+                </ul>
+              </div> <br>
+              
+              <a href="#reservation_menu" class="list-group-item alert alert-warning" data-toggle="collapse" id = "menu_font_t"><center>예약 현황 관리</center></a>
+                <div class="collapse" id="reservation_menu" >
+                  <ul class="list-group">
+                    <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;승인 대기 예약</a>
+                    <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;승인 완료 예약</a>
+                  </ul>
+                </div> <br>
+              
+              <a href="#message_menu" class="list-group-item alert alert-warning" data-toggle="collapse" id = "menu_font_t"><center>나의 문의함</center></a>
+                <div class="collapse" id="message_menu" >
+                  <ul class="list-group">
+                    <a href="#" id="all_message" class="list-group-item" id = "menu_font_t">통합 메일함</a>
+                    <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;내가 보낸 문의</a>
+                    <a href="#" class="list-group-item" id = "menu_font_t">&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>&nbsp;내가 받은 답장</a>
+                  </ul>
+                </div>
+                
+            </div>
+        
+          
+          <script>
+            $('#all_message').on('click', function(){
+              $('all_message_content').show()
+              });
+              
+          </script>
+          
+          
         
     </div>
   </div>
-  
-  <div class="col-md-9" style="padding-right:30px">
-    <div class="alert alert-warning">
-      <h1> 마이페이지 </h1>
-      <p>성 명 : <%= current_user.student_name%><p>
-      <p>학 번 : <%= current_user.student_number %><p>
-      <p>학 과 : <%= current_user.department %><p>
-      <p>나의 예약 수 : <%= Reservation.where(user: current_user.id).count %><p>
-      <p>승인 대기중 : <%= Reservation.where("user = ? and state = ?", current_user.id, "승인대기").count %><p>
-      <p>승인 완료 : <%= Reservation.where("user = ? and state = ?", current_user.id, "승인완료").count %><p>
-    </div>
-  </div>
-  <script>
-    $('#all_message').on('click', function(){
-      $('all_message_content').show()
-      });
-      
-  </script>
-  
-  
 </div>
-
-
->>>>>>> 5d89192124abb175e6207022e2f7744311b208b7
-
+<br><br><br><br><br><br>

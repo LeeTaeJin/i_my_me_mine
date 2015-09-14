@@ -85,7 +85,7 @@
                         <td  style="text-align :center; font-size: 18px;" id="menu_font_t"> <p style = "color:black">  (<%= a.replies.count %>) </p> </td>
 
                     <% else %>    
-                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><a href="/freeboard/warning"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><a href="/users/sign_in"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
                     <% end %>
                         <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><%=a.created_at.in_time_zone("Seoul")%></td>
                 </tr>
