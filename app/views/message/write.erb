@@ -10,7 +10,7 @@
        <div class="form-group">
         <label for="inputprofessor" class="col-lg-2 control-label">보내는 사람</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="sender" value="<%=current_user.email%>" disabled>
+          <input type="text" class="form-control" name="sender" value="<%=current_user.student_name%>" disabled>
         </div>
       </div>
     
@@ -19,7 +19,8 @@
         <div class="col-lg-10">
           <select class="form-control" id="select" name="receiver" required>
               <% User.all.each do |u| %>
-                <option><%=u.email%></option>
+                <option><%=u.student_name%> (<%=u.student_number%>)</option>
+                <input type="hidden" name="receiver_id" value="<%=u.id%>">
               <%end%>
           </select>
           <br>

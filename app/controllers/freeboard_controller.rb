@@ -1,5 +1,7 @@
 class FreeboardController < ApplicationController
  
+ before_action :authenticate_user!, only: [:upload, :reply_write]
+ 
     # 게시판 홈
     def freeboards
        @fb_all = Freeboard.all
@@ -15,14 +17,13 @@ class FreeboardController < ApplicationController
     # 글쓰기 페이지 끝
     
     
-    
     # 글 작성 처리하는 페이지
     def write
         fb_update = Freeboard.new
-        fb_update.fb_name =  params[:user_name]
+        fb_update.fb_user_id =  current_user.id
         fb_update.fb_title = params[:user_title]
         fb_update.fb_content = params[:user_content]
-        fb_update.fb_password = params[:user_passowrd]
+        # fb_update.fb_password = current_user.encrypted_password
         fb_update.save
            
         redirect_to '/freeboard/freeboards'
@@ -48,10 +49,8 @@ class FreeboardController < ApplicationController
         fb_modify = Freeboard.find(params[:id])
         
         
-        if fb_modify.fb_password == params[:md_passowrd]
+        if current_user.id == fb_modify.fb_user_id #사용자가 같으면 삭제가능
              
-           
-            fb_modify.fb_name = params[:md_name]
             fb_modify.fb_content = params[:md_content]
             fb_modify.fb_title = params[:md_title]
             fb_modify.save
@@ -80,9 +79,8 @@ class FreeboardController < ApplicationController
         fb_delete= Freeboard.find(params[:id])
         
         
-        if fb_delete.fb_password == params[:del_passowrd]
-             
-            fb_delete = Freeboard.find(params[:id])
+        if fb_delete.fb_user_id == current_user.id
+            
             fb_delete.destroy
                 
             redirect_to '/freeboard/freeboards'
@@ -110,9 +108,10 @@ class FreeboardController < ApplicationController
         
         fb_reply = Reply.new
         fb_reply.freeboard_id = params[:freeboard_id]
-        fb_reply.rp_name = params[:rp_name]
+        # fb_reply.rp_name = params[:rp_name]
+        fb_reply.user_id=current_user.id
         fb_reply.rp_content = params[:rp_content]
-        fb_reply.rp_hakbun = params[:rp_hakbun]
+        # fb_reply.rp_hakbun = params[:rp_hakbun]
         fb_reply.save
       
         redirect_to :back
@@ -125,8 +124,7 @@ class FreeboardController < ApplicationController
         rp_delete = Reply.find(params[:rp_id])
         
 
-
-        if rp_delete.rp_name == current_user.student_name   
+        if rp_delete.user_id == current_user.id
                     # 같은 이름을 가진 사람이 댓글을 삭제할수도 있으므로 학번으로 바꿔야함.
             
             rp_delete.destroy

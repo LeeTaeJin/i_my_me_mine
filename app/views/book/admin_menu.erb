@@ -1,0 +1,226 @@
+<div class="well">
+  관리자 관리 페이지 입니다. 
+</div>
+
+<div class="containter"> 
+<div class="row">
+
+<div class="col-md-7 col-md-offset-0">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="info">
+        
+        <th>사용자 이름</th>
+        <th>사용날짜</th>
+        <th>사용시간</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <center>시간별 예약 리스트
+      <% Reservation.all.each do |c| %>
+          <tr>
+           
+            <td><%=User.find(c.user).email %></td>
+            <td><%=c.date%></td>
+            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+            
+            <td>
+              <% if current_user %> <!--로그인 된 상태.-->
+                      
+                <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
+                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
+                  
+                  <% if c.state=="승인대기" %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
+                  <%end%>
+                                
+                <% else %> <!--관리자가 아닐때 승인대기-->
+                  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
+                  <input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>
+                            
+                <% end %>
+                                 
+              <% end %> <!-- if current_user end -->
+                    
+
+            </td>
+               
+            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
+            
+           
+          </tr>
+
+      <% end %>
+    </tbody>
+  </table> 
+  
+  
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="info">
+        
+        <th>사용자 이름</th>
+        <th>사용날짜</th>
+        <th>사용시간</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <center>승인대기 예약 리스트
+      <% Reservation.where(state: "승인대기").each do |c| %>
+          <tr>
+           
+            <td><%=User.find(c.user).email %></td>
+            <td><%=c.date%></td>
+            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+            
+            <td>
+              <% if current_user %> <!--로그인 된 상태.-->
+                      
+                <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
+                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
+                  
+                  <% if c.state=="승인대기" %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
+                  <%end%>
+                                
+                <% else %> <!--관리자가 아닐때 승인대기-->
+                  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
+                  <input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>
+                            
+                <% end %>
+                                 
+              <% end %> <!-- if current_user end -->
+                    
+
+            </td>
+               
+            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
+            
+           
+          </tr>
+
+      <% end %>
+    </tbody>
+  </table> 
+  
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr class="info">
+        
+        <th>사용자 이름</th>
+        <th>사용날짜</th>
+        <th>사용시간</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <center>승인완료 예약 리스트
+      <% Reservation.where(state: "승인완료").each do |c| %>
+          <tr>
+           
+            <td><%=User.find(c.user).email %></td>
+            <td><%=c.date%></td>
+            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+            
+            <td>
+              <% if current_user %> <!--로그인 된 상태.-->
+                      
+                <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
+                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
+                  
+                  <% if c.state=="승인대기" %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
+                  <%end%>
+                                
+                <% else %> <!--관리자가 아닐때 승인대기-->
+                  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
+                  <input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>
+                            
+                <% end %>
+                                 
+              <% end %> <!-- if current_user end -->
+                    
+
+            </td>
+               
+            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
+            
+           
+          </tr>
+
+      <% end %>
+    </tbody>
+  </table> 
+</div>
+</div> <!--row의 div-->
+
+<table class="table table-striped table-hover ">
+    <thead>
+      <tr class="info">
+        
+        <th>사용자 이름</th>
+        <th>사용날짜</th>
+        <th>사용시간</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <center>오늘의 오후 6시 이후 예약 목록
+      <% Reservation.where(date: Time.zone.today).where("start_time >= ? ", "18:00".to_time).each do |c| %>
+          <tr>
+           
+            <td><%=User.find(c.user).email %></td>
+            <td><%=c.date%></td>
+            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+            
+            <td>
+              <% if current_user %> <!--로그인 된 상태.-->
+                      
+                <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
+                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
+                  
+                  <% if c.state=="승인대기" %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
+                  <%end%>
+                                
+                <% else %> <!--관리자가 아닐때 승인대기-->
+                  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
+                  <input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>
+                            
+                <% end %>
+                                 
+              <% end %> <!-- if current_user end -->
+                    
+
+            </td>
+               
+            <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
+            
+           
+          </tr>
+
+      <% end %>
+    </tbody>
+  </table> 
+
+
+
+</div>

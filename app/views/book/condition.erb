@@ -1,4 +1,11 @@
-<div class="col-md-8">
+<div class="well">
+  <center>예약현황 정보입니다.</center>
+</div>
+
+<div class="container">
+<div class="row">
+
+<center>
   <table class="table table-striped table-hover ">
     <thead>
       <tr class="info">
@@ -6,6 +13,7 @@
         <th>사용자 이름</th>
         <th>사용날짜</th>
         <th>사용시간</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -20,9 +28,9 @@
             <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
             
             <td>
-            <!--<2% if current_user %> <!--로그인 된 상태.-->-->
+            <!--<2% if current_user %> <!--로그인 된 상태.-->
                       
-                <!--<2%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->-->
+                <!--<2%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
                   <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
                   
                   <% if c.state=="승인대기" %>
@@ -32,13 +40,13 @@
                   <!--<input class="btn btn-primary btn-sm" onclick="change()" value="승인하기" id="<=c.id%>"></input>-->
                   <%end%>
                                 
-                <!--<2% else %> <!--관리자가 아닐때 승인대기-->-->
-                <!--  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->-->
+                <!--<2% else %> <!--관리자가 아닐때 승인대기-->
+                <!--  <span class="label label-info"><%#=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
                   <!--<input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>-->
                             
                 <!--<2% end %>-->
                       
-              <!--<2% else %> <!--로그인 안된 상태에서는 로그인창으로 이동-->-->
+              <!--<2% else %> <!--로그인 안된 상태에서는 로그인창으로 이동-->
                
             
               <!--<2% end %>  -->
@@ -80,10 +88,79 @@
                 <!--예약취소는 사용자만 가능하게! 관리자가 안된다고 생각하면 삭제 말고 승인 거부하면된다-->
                 <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show_check<%=c.id%>" >예약 취소</button></td>
         
-            <%end%>
+              <%end%>
             
           </tr>
+          
+          
+          
+          <div id="show_check<%=c.id%>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">   <!-- 예약취소 모달 -->
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">예약 취소</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">예약을 취소하시겠습니까?</label>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <!--<form action="/book/delete/<%=c.id%>" method="POST">-->
+                        <a href="/book/delete/<%=c.id%>"> <button type="submit" class="btn btn-primary">취소하기</button></a>
+                      <!--</form>-->
+                </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- 예약취소 모달 끝 -->
+          
+          <div id="show<%=c.id%>" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"> <!--예약상세보기-->
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel"> 예약 상세 보기</h4>
+                </div>
+                <div class="modal-body">
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">사용자</label>
+                    <%=c.user%>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">사용시간</label>
+                    <%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">사용목적</label>
+                    <%=c.purpose%>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">담당 교수</label>
+                    <%=c.professor%>            
+                  </div>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id = "ok" >승인하기</button>
+          
+                </div>
+              </div>
+            </div>
+          </div> <!--예약상세보기 끝-->
+          
       <% end %>
     </tbody>
   </table> 
+</center>
+<br><br>
 </div>
+</div>
+

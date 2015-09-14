@@ -20,12 +20,11 @@ ActiveRecord::Schema.define(version: 20150909040858) do
   end
 
   create_table "freeboards", force: :cascade do |t|
-    t.string   "fb_name"
+    t.integer  "fb_user_id"
     t.string   "fb_title"
     t.text     "fb_content"
-    t.string   "fb_password"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -38,9 +37,8 @@ ActiveRecord::Schema.define(version: 20150909040858) do
 
   create_table "replies", force: :cascade do |t|
     t.integer  "freeboard_id"
-    t.string   "rp_name"
+    t.string   "user_id"
     t.string   "rp_content"
-    t.integer  "rp_hakbun"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -68,6 +66,7 @@ ActiveRecord::Schema.define(version: 20150909040858) do
   create_table "users", force: :cascade do |t|
     t.string   "student_name",           default: "", null: false
     t.string   "student_number",         default: "", null: false
+    t.string   "department",             default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

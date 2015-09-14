@@ -37,7 +37,9 @@
     // });
   });
   </script>
-    
+
+
+
      <div class="jumbotron" id="top" style="background-image: url(https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/11947483_833544056761626_6388524221709896910_n.jpg?oh=df1434c4094e5f37d1222391567bd482&oe=56807E0E&__gda__=1446490038_9fe83b67f9ad1e62d26e55431b0817a2); background-size: cover; height:530px;">
       <div class="container">
         <div class="row">
@@ -53,7 +55,7 @@
             <!--오늘의 예약건수-->
             <br><br><br><br>
             
-            <div class="notice" id="menu_font" style="margin-left: 175px; padding-top: 20px;padding-left: 10px" >
+            <div id="menu_font" style="margin-left: 175px; padding-top: 20px;padding-left: 10px" >
               <!--아코디언-->
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
@@ -77,7 +79,7 @@
         </div>
         이름  : <%=current_user.student_name%><br>
         학번  : <%=current_user.student_number%><br>
-        학과  : ...<br>
+        학과  : <%=current_user.department%><br>
       </div>
     </div>
   </div>
@@ -156,11 +158,12 @@
           <%end%> 
 
         </div>
-      </div><br><br><br> 
+      </div><br><br><br>
     </div>
-    
+    </div>
       <!--페이지 내리는거(손가락)-->
       <center>
+      <br><br><br><br><br><br> 
         <div class="page-scroll">
           <p style=" font-size:20px;" id="menu_font">How To Use&nbsp;&nbsp;
           
@@ -173,10 +176,50 @@
           </p>
         </div>
       </center><br>
+      <!--<nav class="navbar-fixed-top">-->
+      <!--  <div class="container">-->
+      <!--    <div align="right" style="padding-top:100px;margin-right:-200px">-->
+      <!--      <div class="btn-group btn-group-sm btn-group" role="group">-->
+              
+      <!--          <button type="button" id="top" class="btn btn-default">-->
+      <!--            <a href="#howtouse">-->
+      <!--              <div class="page-scroll">-->
+      <!--                How To Use-->
+                    
+                    
+                      <!--<i class="icon-angle-down scroll-down" style="padding-top:2px" >-->
+      <!--                  <span class="glyphicon glyphicon-hand-down"></span>-->
+                      <!--</i>-->
+                    
+      <!--              </div>-->
+      <!--            </a>-->
+      <!--          </button>-->
+                
+      <!--        <button type="button" id="bottom" class="btn btn-default"> 공지사항 </button>-->
+              
+      <!--        <button type="button" class="btn btn-default">-->
+                
+      <!--            <a href="#top">-->
+      <!--              TOP <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>-->
+      <!--            </a>-->
+                
+      <!--        </button>-->
+              
+      <!--        <button type="button" class="btn btn-default">-->
+                
+      <!--            <a href="#bottom">-->
+      <!--              BOTTOM <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>-->
+      <!--            </a>-->
+                
+      <!--        </button>-->
+      <!--      </div>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</nav>-->
 
     <!--공지사항-->
     <section class="mt150" id="notice_slidedown">
-     <br><br><br><br><br><br><br>
+     <br><br><br><br>
         <div itemscope="" itemtype="http://schema.org/LocalBusiness" class="container">
           <div class="row">
             <div class="full">
@@ -205,7 +248,7 @@
           </div>
         </div><br><br><br><br>
       </section>
- 
+
   <!--이용방법-->
   <div class = "how" id ="howtouse">
   <br><br><br><br><br>
@@ -306,7 +349,7 @@
       		</div>
       			<h3 class="red-border-bottom" id = "picon1" >Contact</h3><br>
       			<p id = "picon1" id="menu_font_t" style="font-size: 17px;">사용 중 불편하거나 건의사항이 있으면<br>아래의 쪽지보내기를 통해<br>관리자에게 쪽지를 보내주세요.</p>
-      			<a href ="http://my-zone-park-ji-yeon.c9.io/message/main"> <button id = "picon1" style="color: black; font-size: 17px;" id="menu_font_t"> 쪽지 보내기</button> </a> 
+      			<a href ="/message/write"> <button id = "picon1" style="color: black; font-size: 17px;" id="menu_font_t"> 쪽지 보내기</button> </a> 
   		  </div>
   		
   		  <div class="col-lg-4 col-sm-4 focus-box red wow fadeInLeft animated animated" data-wow-offset="30" data-wow-duration="1.5s" data-wow-delay="0.15s" style="visibility: visible;-webkit-animation-duration: 1.5s; -moz-animation-duration: 1.5s; animation-duration: 1.5s;-webkit-animation-delay: 0.15s; -moz-animation-delay: 0.15s; animation-delay: 0.15s;">
@@ -336,19 +379,11 @@
             </i>
           </a>
       </div>
-      <br>
+      </center>
+      <br> <br>
+      
+
+      
 
 
-
-<% if params[:mode] == "false" %>
-   <script>
-    alert("관리자가 아닙니다.");
-  </script>
-  
-<% elsif params[:mode] == "blank" %>
-   <script>
-    alert("로그인이 필요합니다.");
-  </script>
-  
-<% end %>
 

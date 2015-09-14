@@ -42,6 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) << :student_number
     devise_parameter_sanitizer.for(:sign_up) << :student_name
+    devise_parameter_sanitizer.for(:sign_up) << :department
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,4 +1,4 @@
-	<!--freeboard css-->
+<!--freeboard css-->
 	
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/hanna.css">
@@ -46,51 +46,57 @@
 <div class="containter"><!--풋터를 위한 디브-->
 <div class="row">
 
-<div class="well">
-  <center>공지사항 게시판<br>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>강의실 예약 전, 공지사항을 꼭 필독바랍니다!<br>(공지사항은 관리자만 작성이 가능합니다)<br>
 </div>
+<br>
 
 <div class="col-md-6 col-md-offset-3">
-<div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><center>공지사항</center></h3>
-      </div>
-      <div class="panel-body">
+<!--<div class="panel panel-info">-->
+<!--      <div class="panel-heading">-->
+<!--        <h3 class="panel-title"><center>공지사항</center></h3>-->
+<!--      </div>-->
+<!--      <div class="panel-body">-->
   
   <!--게시판-->
 
   <!--<div class="container">-->
-     <div class="jumbotron" style="width:600px height:600px">
+     <!--<div class="jumbotron" style="width:600px height:600px">-->
       <form id="form1">
         <table class="table table-condensed" id="table" style="padding-top:1px; padding-bottom:1px; background:rgba(0,0,0,0); align:center">
-        
-          <tr>
-            <th style="text-align: center">Num </th>
-            <th style="text-align: center">글쓴이 </th>
-            <th style="text-align: center">제목 </th>
-            <th style="text-align: center">작성일</th>
-          </tr>
+          <center><p id="menu_font" style="font-size: 30px;">   
+          <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> &nbsp;공지사항 </p></center><br>
+          
+            <tr> 
+              <th style="text-align: center; font-size: 20px;" id="menu_font_t">Num </th>
+              <th style="text-align: center; font-size: 20px;" id="menu_font_t">글쓴이 </th>
+              <th style="text-align: center; font-size: 20px;" id="menu_font_t">제목 </th>
+              <th style="text-align: center; font-size: 20px;" id="menu_font_t">댓글수 </th>
+              <th style="text-align: center; font-size: 20px;" id="menu_font_t">작성일</th>
+            </tr>
           <% @fb_all.reverse_each do |a| %>
                 <tr class="data">
-                    <td  style="text-align :center"><%= a.id %></td>
+                    <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><%= a.id %></td>
                 
-                    <td  style="text-align :center"><%= a.fb_name %></td>
+                    <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><%= User.find(a.fb_user_id).student_name %></td>
                      
                     <% if user_signed_in? %>
-                        <td  style="text-align :center"><a href="/freeboard/upload_view?id=<%= a.id %>"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"> <a href="/freeboard/upload_view?id=<%= a.id %>"> <p style = "color:black"> <%= a.fb_title %></p></a> </td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"> <p style = "color:black">  (<%= a.replies.count %>) </p> </td>
+
                     <% else %>    
-                        <td  style="text-align :center"><a href="/freeboard/warning"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><a href="/freeboard/warning"><%= a.fb_title %>(<%= a.replies.count %>)</a></td>
                     <% end %>
-                        <td  style="text-align :center"><%=a.created_at.in_time_zone("Seoul")%></td>
+                        <td  style="text-align :center; font-size: 18px;" id="menu_font_t"><%=a.created_at.in_time_zone("Seoul")%></td>
                 </tr>
             <% end %>
         </table>
         <% if user_signed_in? %>
-                 <% if current_user.email == 'admin@ptu.ac.kr' %>
-                    <p align="right"><a href="/freeboard/upload">작성하기</a></p>
+                 <% if current_user.email == 'admin@ptu.ac.kr' %> <br>
+                    <a href="/freeboard/upload"><input type = "button"  class="btn btn-primary btn-sm" style="font-size: 18px;" id="menu_font" value = "작성하기"></input></a>
                   <% else %>
-                  
-                    <input type ="button" id = "writeadmin" value = "작성하기"></input>
+                    <br>
+                    <input class="btn btn-primary" type ="button" style="font-size: 18px;" id="menu_font" id = "writeadmin" value = "작성하기"></input>
                                        
                     <script type="text/javascript"> 
                       $(function() {
@@ -118,17 +124,17 @@
                       
                   <% end %>
         <% else %>
-            <p align="right"><a href="/freeboard/warning">작성하기</a></p>
+          <a href="/freeboard/upload"><input type = "button"  class="btn btn-primary btn-sm"  value = "작성하기"></input></a>
         <% end %>
         <div class="paging-container" id="tablePaging"> </div>
         <div style="clear: both;"></div>
       </form>
-    </div>
+    <!--</div>-->
 
 
   
-</div><!--패널-->
-</div><!--전체패널-->
+<!--</div><!--패널-->
+<!--</div><!--전체패널-->
 </div>
 
 
@@ -151,7 +157,6 @@
 </div>
 </div>
 	
-	
+	<br><br><br><br><br>
 </body>
 </html>
-

@@ -2,3 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//My Zone Font
+#main_font {
+  font: 400 155px/1.5 'Pacifico', Helvetica, sans-serif;
+  color: white;
+  text-shadow: 5px 4px 0px rgba(0, 0, 0, 0.8), 7px 7px 7px rgba(0, 0, 0, 0.5);
+}
+#main_font_ {
+  font: 400 20px/1.5 'Pacifico', Helvetica, sans-serif;
+  color: white;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2), 7px 7px 7px rgba(0, 0, 0, 0.05);
+}
+
+//두꺼운 한글 Font
+#menu_font {
+  font-family: 'Jeju Gothic', serif;
+}
+
+//얇은 한글 Font
+#menu_font_t {
+    font-family: 'Nanum Gothic', serif;
+    
+}

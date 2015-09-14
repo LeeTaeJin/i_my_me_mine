@@ -1,23 +1,32 @@
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="well" id="menu_font" style="font-size: 20px;" >
+  <center>관리자는 수정사항을 작성한 후 아래의 수정하기 버튼을 눌러 게시하세요.<br>
+</div>
 <br>
 
-<h1>수정 페이지</h1>
-<%= form_tag("/freeboard/update", method: "post") do %>
-    
-      <p> 작성자 : <%= @one_fb.fb_name %></p> 
+<center>
+
+     <p id="menu_font" style="font-size: 30px;"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;게시글 수정</p><br><%= form_tag("/freeboard/update", method: "post") do %>
+        <div style="text-align: center; font-size: 20px;" id="menu_font"><br>이름 </div>
+        <div style="padding-top:1px; padding-bottom:1px; background:rgba(80,80,80,0.15); align:center; width: 700px; font-size: 18px;" id="menu_font_t">
+              <br><div tpye= "text" name = "md_name"><%= User.find(@one_fb.fb_user_id).student_name %></div><br>
+        </div>
+      
+     <div style="text-align: center; font-size: 20px;" id="menu_font"> <br>제목 </div>
+        <input type="text" name="md_title" placeholder="Title"  style="font-size: 18px; height: 40px;" id="menu_font_t" value = "<%= @one_fb.fb_title %>">
     <br>
-        <input type="text" name="md_title" placeholder="Title" value = "<%= @one_fb.fb_title %>">
-    <br>
-    <br>
-        <textarea type="text" name="md_content"  placeholder="Content"><%= @one_fb.fb_content %></textarea>
-    <br>
-        <p><input type="password" name="md_passowrd" placeholder="Pw"> 비밀번호를 입력해주세요 </p>
-    <br>
-        <input type="submit" value="확인">
+     <div style="text-align: center; font-size: 20px;" id="menu_font"> <br>내용 </div>
+        <textarea type="text" name="md_content" placeholder="Content" rows="20" cols="70"   style="font-size: 18px;" id="menu_font_t"><%= @one_fb.fb_content %></textarea>
+    <br><br><br> 
+        <!--<div style="text-align: center; font-size: 18px;" id="menu_font">-->
+        <!--    * 수정을 위한 비밀번호를 입력해주세요.<br>-->
+        <!--    (수정 및 삭제시 사용됩니다)<br>-->
+        <!--</div>-->
+        <!--<input type="password" name="md_passowrd" placeholder="Password" style="font-size: 15px; height: 30px;" id="menu_font_t">&nbsp;-->
+        <input class="btn btn-primary btn-sm" type ="submit" style="font-size: 18px;" id="menu_font" id = "writeadmin" value = "수정하기"></input> <br> <br> <br>
         <input type='hidden' name='id' value='<%= @id %>'>
+    <br><br>
     
 <% end %>
+
+</center>
+<br><br><br><br><br>

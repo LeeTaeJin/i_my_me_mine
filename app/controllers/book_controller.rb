@@ -152,7 +152,7 @@ class BookController < ApplicationController
     end    
     
     def test
-        @a="ㅅㅂ"
+        @a="ff"
     end
    
     

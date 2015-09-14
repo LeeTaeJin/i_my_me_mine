@@ -2,14 +2,11 @@
   <center><strong><%=@building.name%></strong>에 대한 강의실 정보입니다.</center>
 </div>
 
+<center>
 <% @class_list.each do |c| %>
 <!--층별로 나눠주는 코드 작성할것 -->
  
     <a href="/book/view_booking?id=<%=c.id%>&show_date=<%=Time.zone.today%>" class="btn btn-default" style="margin-bottom:10px"><%=c.room_number%>호</a> 
 
 <%end%>
-
-  
-
-<br> 선택된 건물에 대한 강의실정보를 보여준다. <br>
-만약 강의실을 선택할시 그날의 예약 현황을 보여주는 페이지로 간다 => view_booking
+</center>

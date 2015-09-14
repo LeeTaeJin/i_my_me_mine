@@ -44,7 +44,7 @@
         <div class = "col-md-6">
                 <ul class="nav navbar-nav" id="menu_font" style="padding-left:70px">
                       <li>
-                          <a href="/"><img src="http://my-zone-park-ji-yeon.c9.io/img/ptu.jpg" /></a>
+                          <a href="/"><img src="http://notice-chohyejin.c9.io/img/ptu.png" /></a>
                       </li>
                       <li class="page-scroll">
                         <% if current_page?(controller: 'book', action: 'real_main') %>        
@@ -56,10 +56,25 @@
                       <li>
                           <a id="11" class="page-scroll" href="/book/main" style="margin-top: 17px; font-size:20px;">예약하기</a>
                       </li>
+                      
+                       <% if current_user %> <!-- 로그인이 되어있고 -->
+                          <% if current_user.email == "admin@ptu.ac.kr" %>
                       <li>
+<<<<<<< HEAD
                           <a id="condition2" class="page-scroll" href="#" style="margin-top: 17px; font-size:20px;" data-toggle="modal" data-target="#condition">예약현황(X)</a>
                           
                       </li>   
+=======
+                          <a id="condition2" class="page-scroll" href="/book/condition" style="margin-top: 17px; font-size:20px;">예약현황(X)</a>
+                          
+                      </li>
+                          <% else %>
+                          
+                          <% end %>
+                      <% else %>
+                      
+                      <% end %>
+>>>>>>> 5d89192124abb175e6207022e2f7744311b208b7
                       <li class="page-scroll">
                           <% if current_page?(controller: 'book', action: 'real_main') %>        
                           <a id="11" class="scroll-down1" href="#bottom" style="margin-top: 17px; font-size:20px;">문의하기</a>
@@ -82,9 +97,14 @@
                        <a id="11" class="page-scroll" href="/book/mypage" style = "margin-top: 17px; font-size:20px">마이페이지</a>
                        </li>
                       
-                       <li>
-                        <a id="11" class="page-scroll" href="/users/edit" style = "margin-top: 17px; font-size:20px">회원정보 수정</a>
-                      </li>
+                      <%if current_user.email=="admin@ptu.ac.kr"%>
+                        <li>
+                          <a id="11" class="page-scroll" href="/book/admin_menu" style = "margin-top: 17px; font-size:20px">관리자 메뉴</a>
+                        </li>
+                      <%end%>
+                      <!-- <li>-->
+                      <!--  <a id="11" class="page-scroll" href="/users/edit" style = "margin-top: 17px; font-size:20px">회원정보 수정</a>-->
+                      <!--</li>-->
                       
                       <li>
                         <a id="11" class="page-scroll" href="/users/sign_out" style="margin-top: 17px; font-size:20px">로그아웃</a>
@@ -112,18 +132,20 @@
     </div>
   </div> <!-- 상단 고정 메누바 끝 -->
   
-<%= yield %>
-
+  
+      <%= yield %>
+    
+    
+  
       <!--마지막 copyright 부분-->
       <footer>
         <center>      
-        <br><br> 
-          <div style="background-color:#0C5838;margin-top: 500px;">
+          <div style="background-color:#0C5838;">
           <br><br><br>
             <p style = "color: white; font-size:19px;">Copyright © Company Tip+_one 2015, All Rights Reserved.<br></p>
             <p style="color: white; font-size:17px;">E-mail : um135@naver.com<br>
                                                      Pyeongtaek University URL : link( <a href = "www.ptu.ac.kr" style="color:white">www.ptu.ac.kr</a> )
-            <br><br><br><br></p>  
+          <br><br><br><br></p>  
           </div>
         </center>
       </footer>
@@ -139,6 +161,7 @@
       <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   
   
+<<<<<<< HEAD
   
   <% if current_user %>
     <% if current_user.email == "admin@ptu.ac.kr" %>
@@ -190,6 +213,12 @@
   
   
   
+=======
+
+   
+
+
+>>>>>>> 5d89192124abb175e6207022e2f7744311b208b7
   </body>
 </html>
 

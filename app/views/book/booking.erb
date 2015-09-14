@@ -4,6 +4,8 @@
   <center><strong><%=@class.room_number%>호</strong>대여 신청서를 작성해주세요  <%=Time.zone.now%> </center>
 </div>
 
+<div class="container">
+<div class="row">
 
 <div class="col-md-4"></div>
 <div class="col-md-4">
@@ -33,14 +35,14 @@
       <div class="form-group">
         <label for="inputtime" class="col-lg-2 control-label">사용시간</label>
         <div class="col-lg-10">
-          <div class="col-lg-5">
-            <input type="time" class="form-control" name="start_time" required>  
+          <div class="col-lg-5" style="padding-left: 0px;padding-right: 0px;">
+            <input type="time" class="form-control" name="start_time" required style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;width: 105px;">  
           </div>
-          <div class="col-lg-1">
+          <div class="col-lg-1" style="padding-left: 0px;padding-right: 15px;">
             <center>~</center>
           </div>
-          <div class="col-lg-5">
-            <input type="time" class="form-control" name="finish_time" required> 
+          <div class="col-lg-5" style="padding-left: 0px;padding-right: 0px;">
+            <input type="time" class="form-control" name="finish_time" required style="padding-left: 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;width: 105px;"> 
           </div>
         </div>
         
@@ -95,8 +97,7 @@
 
 <div class="col-md-4"></div>
 
-
-<div class="col-lg-10">
+<p>
 만약 102호를 클릭하고 예약하기를 클릭하면<br> 
 예약하는 호수는 102호로 한정하기<br>
 <br>
@@ -105,4 +106,8 @@
 <br>
 만약 현재예약되어있는 시간이랑 사용자가 기입한 사용시간이 같으면 경고가 뜨고 다시 폼양식으로 redirect 한다.<br>
 예약 완료시 예약완료ㅇ되었다는 alert뜸
+</p>
+
+
+</div>
 </div>

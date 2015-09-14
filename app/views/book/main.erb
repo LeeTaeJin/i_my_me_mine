@@ -1,74 +1,85 @@
 <div class="well">
-  <center>메인임둥<br>
-  오늘의 예약 건수 : <span class="badge"><%=Reservation.where(date: Time.zone.today).count%></span><br>Time.zone.now=<%=Time.zone.now%> / <%=Time.zone_offset('Seoul')%>--</center>
-  <br>
-  
+  <center>
+    오늘의 예약 건수 : <span class="badge"><%=Reservation.where(date: Time.zone.today).count%></span>
+    <br>현재시간 : <%=Time.zone.now%> / <%=Time.zone_offset('Seoul')%>
+    <br>예약할 강의실을 선택해주세요.
+  </center>
 </div>
 
 
-
-<div class="col-md-6">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><center>공지사항</center></h3>
-      </div>
-      <div class="panel-body">
-        --- 이 페이지에 필요한것----<br>
-        [1]행사정보나 뭐 그런걸 알려주는 달력<br>
-        [2]공지사항을 알려주는 기능이 있어야함 [관리자들이 쓸수있게끔!]<br>
-        [3]예약할 건물을 선택해 주세요 (본관, 이공관) ->버튼으로 구현<br> ->detail_info.erb 로 이동(본관 선택시 본관에 대한 강의실 출력)<br>
-        [4]어플리케이션.이알비 ->홈페이지 기본틀 제공할 것! (상단바에 페이지 이동, 로그인폼 등등)<br>
+<!--<div class="col-md-6">-->
+<!--    <div class="panel panel-info">-->
+<!--      <div class="panel-heading">-->
+<!--        <h3 class="panel-title"><center>공지사항</center></h3>-->
+<!--      </div>-->
+<!--      <div class="panel-body">-->
+<!--        --- 이 페이지에 필요한것----<br>-->
+<!--        [1]행사정보나 뭐 그런걸 알려주는 달력<br>-->
+<!--        [2]공지사항을 알려주는 기능이 있어야함 [관리자들이 쓸수있게끔!]<br>-->
+<!--        [3]예약할 건물을 선택해 주세요 (본관, 이공관) ->버튼으로 구현<br> ->detail_info.erb 로 이동(본관 선택시 본관에 대한 강의실 출력)<br>-->
+<!--        [4]어플리케이션.이알비 ->홈페이지 기본틀 제공할 것! (상단바에 페이지 이동, 로그인폼 등등)<br>-->
         
-        <br>
-        해결한 문제<br>
-        [no] 기준시간을 한국시간으로 변경할 것 ->Timezone변경시 dateTime이 모두 nil 처리가 되므로 offset기능 사용할것!!!!!!!!!(수정 필요!)<br>
-        [ok] 달력 >< <br>
-        해결해야할 것 <br>
+<!--        <br>-->
+<!--        해결한 문제<br>-->
+<!--        [no] 기준시간을 한국시간으로 변경할 것 ->Timezone변경시 dateTime이 모두 nil 처리가 되므로 offset기능 사용할것!!!!!!!!!(수정 필요!)<br>-->
+<!--        [ok] 달력 >< <br>-->
+<!--        해결해야할 것 <br>-->
         
-        [2] 달력클릭시 해당 날짜에 입력된 예약현황 카운트해서 표시 <br>
-        [3] 예약신청서 작성시 관리자에게 승인을 받게끔 해야할것  <br>
-        [4] 대학원동 클릭시 호수가 층별로 나눠지게 보여지게함<br>
-        -------------<br>
-        [1]디자인 시작하기!(대충 컨셉이나 포인트 색이나 지정해서 디자인 할것 )<br>
-        [2]적어도 9월 첫주까지는 대충 완성 시켜놓고 피드백받아서 고치기<br>
-        [3]로그인!!!!!!!!!!!왜 보조강의 안올려줄까요<br>
-        [4]타임테이블을 이용하여 그날의 빌리는 시간을 보기좋게 하기<br>
-        [5]예약시간 중복 안되도록 하기<br>
-        [6]로그인시 스튜던트 네임으로 나오기 하기 ex)박지연 님이 접속하셨습니다 <br>
+<!--        [2] 달력클릭시 해당 날짜에 입력된 예약현황 카운트해서 표시 <br>-->
+<!--        [3] 예약신청서 작성시 관리자에게 승인을 받게끔 해야할것  <br>-->
+<!--        [4] 대학원동 클릭시 호수가 층별로 나눠지게 보여지게함<br>-->
+<!--        -------------<br>-->
+<!--        [1]디자인 시작하기!(대충 컨셉이나 포인트 색이나 지정해서 디자인 할것 )<br>-->
+<!--        [2]적어도 9월 첫주까지는 대충 완성 시켜놓고 피드백받아서 고치기<br>-->
+<!--        [3]로그인!!!!!!!!!!!왜 보조강의 안올려줄까요<br>-->
+<!--        [4]타임테이블을 이용하여 그날의 빌리는 시간을 보기좋게 하기<br>-->
+<!--        [5]예약시간 중복 안되도록 하기<br>-->
+<!--        [6]로그인시 스튜던트 네임으로 나오기 하기 ex)박지연 님이 접속하셨습니다 <br>-->
         
-      </div>
-    </div>
+<!--      </div>-->
+<!--    </div>-->
     
-     <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><center>달력</center></h3>
-      </div>
-      <div class="panel-body">
-        <center>
-          <div id="datepicker"></div>
-            <script>
-            // $( "#datepicker" ).datepicker();
-            var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
-            </script>
-        </center>
-      </div>
+<!--     <div class="panel panel-info">-->
+<!--      <div class="panel-heading">-->
+<!--        <h3 class="panel-title"><center>달력</center></h3>-->
+<!--      </div>-->
+<!--      <div class="panel-body">-->
+<!--        <center>-->
+<!--          <div id="datepicker"></div>-->
+<!--            <script>-->
+            <!--// $( "#datepicker" ).datepicker();-->
+<!--            var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' });-->
+<!--            </script>-->
+<!--        </center>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <center>
+      <img src="http://www.ptu.ac.kr/ptu/include/img/contents/campus_map/campus_map_s.jpg">
+      </center>
     </div>
+  
+    <div class="col-md-5">
+        <!--<div class="panel panel-info">-->
+        <!--  <div class="panel-heading">-->
+        <!--    <h3 class="panel-title"><center>예약할 강의실을 선택해주세요</center></h3>-->
+        <!--  </div>-->
+        <!--  <div class="panel-body">-->
+            
+            <% @building.each do |b| %>
+            
+            <a href="/book/detail_info/<%=b.id%>" class="btn btn-success" style="margin-bottom:10px"><%=b.name%></a><br>
+            
+            <%end%>
+            
+    </div>
+
+  </div>
 </div>
 
-<div class="col-md-6">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><center>예약할 강의실을 선택해주세요</center></h3>
-      </div>
-      <div class="panel-body">
-        <% @building.each do |b| %>
-        
-        <a href="/book/detail_info/<%=b.id%>" class="btn btn-default" style="margin-bottom:10px"><%=b.name%></a><br>
-        
-        <%end%>
-      </div>
-    </div>
-</div>
-
-<br>
+<br><br><br>
 
