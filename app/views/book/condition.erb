@@ -1,5 +1,7 @@
 <div class="well">
-  <center>예약현황 정보입니다.</center>
+  <center id = "menu_font" style="font-size: 20px">
+    예약현황 정보입니다.
+  </center>
 </div>
 
 <div class="container">
@@ -10,9 +12,9 @@
     <thead>
       <tr class="info">
         
-        <th>사용자 이름</th>
-        <th>사용날짜</th>
-        <th>사용시간</th>
+        <th id = "menu_font_t">사용자 이름</th>
+        <th id = "menu_font_t">사용날짜</th>
+        <th id = "menu_font_t">사용시간</th>
         <th></th>
         <th></th>
         <th></th>
@@ -23,9 +25,9 @@
       <% @class.order(:start_time).each do |c| %>
           <tr>
            
-            <td><%=User.find(c.user).email %></td>
-            <td><%=c.date%></td>
-            <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
+            <td id = "menu_font_t"><%=User.find(c.user).email %></td>
+            <td id = "menu_font_t"><%=c.date%></td>
+            <td id = "menu_font_t"><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
             
             <td>
             <!--<2% if current_user %> <!--로그인 된 상태.-->
@@ -99,16 +101,16 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">예약 취소</h4>
+                  <h4 class="modal-title" id="exampleModalLabel menu_font_t">예약 취소</h4>
                 </div>
                 <div class="modal-body">
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">예약을 취소하시겠습니까?</label>
+                    <label for="recipient-name" class="control-label menu_font_t">예약을 취소하시겠습니까?</label>
                   </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <!--<form action="/book/delete/<%=c.id%>" method="POST">-->
-                        <a href="/book/delete/<%=c.id%>"> <button type="submit" class="btn btn-primary">취소하기</button></a>
+                        <a href="/book/delete/<%=c.id%>"> <button type="submit" class="btn btn-primary" id = "menu_font_t">취소하기</button></a>
                       <!--</form>-->
                 </div>
                 </div>
@@ -121,35 +123,35 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel"> 예약 상세 보기</h4>
+                  <h4 class="modal-title" id="exampleModalLabel menu_font_t"> 예약 상세 보기</h4>
                 </div>
                 <div class="modal-body">
                   
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">사용자</label>
+                    <label for="recipient-name" class="control-label" id ="menu_font_t">사용자</label>
                     <%=c.user%>
                   </div>
                   
                   
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">사용시간</label>
+                    <label for="recipient-name" class="control-label" id ="menu_font_t">사용시간</label>
                     <%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%>
                   </div>
                   
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">사용목적</label>
+                    <label for="recipient-name" class="control-label" id ="menu_font_t">사용목적</label>
                     <%=c.purpose%>
                   </div>
                   
                   <div class="form-group">
-                    <label for="recipient-name" class="control-label">담당 교수</label>
+                    <label for="recipient-name" class="control-label" id ="menu_font_t">담당 교수</label>
                     <%=c.professor%>            
                   </div>
                 </div>
                 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id = "ok" >승인하기</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id ="menu_font_t">Close</button>
+                  <button type="button" class="btn btn-primary" id = "ok menu_font_t" >승인하기</button>
           
                 </div>
               </div>
@@ -164,3 +166,4 @@
 </div>
 </div>
 
+<br><br><br><br><br>
