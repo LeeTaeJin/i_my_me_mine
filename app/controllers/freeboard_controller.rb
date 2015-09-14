@@ -34,7 +34,6 @@ class FreeboardController < ApplicationController
     def modify
         
         @id = params[:id]
-      
         @one_fb = Freeboard.find(@id)
         
     end
