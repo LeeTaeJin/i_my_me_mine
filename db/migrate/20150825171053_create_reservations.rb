@@ -10,6 +10,8 @@ class CreateReservations < ActiveRecord::Migration
       t.datetime :finish_time
       t.string :purpose
       t.string :state
+      
+      t.integer :real_id
             
       t.timestamps null: false
     end

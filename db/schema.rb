@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150909040858) do
     t.datetime "finish_time"
     t.string   "purpose"
     t.string   "state"
+    t.integer  "real_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

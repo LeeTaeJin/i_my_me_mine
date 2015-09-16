@@ -136,7 +136,7 @@
         <th>사용날짜</th>
         <th>사용시간</th>
         <th></th>
-        <th></th>
+        <th>승인여부</th>
         <th></th>
       </tr>
     </thead>
@@ -149,55 +149,36 @@
             <td><%=c.start_time.to_s(:db)%> ~ <%=c.finish_time.to_s(:db)%></td>
             
             <td>
-              <% if current_user %> <!--로그인 된 상태.-->
-                      
-                <%  if current_user.email == "admin@ptu.ac.kr" %> <!--관리자일때 승인하기-->
-                  <span class="label label-info" id="view_state<%c.id%>"><%=c.state%></span>
+            
+              <!--예약승인-->
+              
+              
+              <% if current_user.email == 'admin@ptu.ac.kr' %>            <!-- 관리자만 승인 할 수 있도록 -->
+                
+                <form action = "/book/check/<%=c.id%>" method = "POST">
                   
-                  <% if c.state=="승인대기" %>
-                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()" >승인하기</button>
-                  <% else %>
-                    <button type="button" class="btn btn-primary btn-sm" id="button<%=c.id%>" onclick="change()">승인취소</button>
-                  <input class="btn btn-primary btn-sm" onclick="change()" value="승인하기" id="<=c.id%>"></input>
-                  <%end%>
-                                
-                <% else %> <!--관리자가 아닐때 승인대기-->
-                  <span class="label label-info"><%=c.state%></span><!--관리자가 아닐땐 상태만 보여준다-->
-                  <input class="btn btn-primary btn-sm" value="승인대기" id="<=c.id%>"></input>
+                  <select name="selection">
+                    <option>-----</option>
+                    <option>승인 완료</option>
+                    <option>승인 거부</option>
+                  </select> 
+                  
+                  <input type = "submit" value = "확인">
+    
+                </form>
+              
+              <% end %>
                             
-                <% end %>
-                                 
-              <% end %> <!-- if current_user end -->
-                    
-<script>
-   function change(){                             
-// $(function() {  
-                                	     
-  // $("#button%=c.id%>").click(function change(){                 
-
-    var view_state = document.getElementById("view_state<%=c.id%>");
-    var button = document.getElementById("button<%=c.id%>");
-    alert("view_state<%=c.id%>  ;  button<%=c.id%>"  );
-      <% if c.state == "승인대기" %> 
-      // 승인대기상태라면 버튼눌렀을때 승인완료로 바뀜
-        <% @state_change=Reservation.find(c.id)
-           @state_change.state="승인완료"
-           @state_change.save %> //db에 저장
-           
-           view_state.innerHTML="<%=c.state%>"; //상태표시를 바꿔줌
-           button.innerHTML="승인취소"; //버튼의값을 일시적으로 바꿔줌
-           
-      <% else %>//승인취소시
-        <% @state_change=Reservation.find(c.id)
-           @state_change.state="승인대기"
-           @state_change.save %> //db에 저장
-           
-           view_state.innerHTML="<%=c.state%>"; //상태표시를 바꿔줌
-           button.innerHTML="승인하기"; //버튼의값을 일시적으로 바꿔줌
-      <%end%>
-  // });
-};
-</script>
+              
+              
+              <td>
+              <!--db에 저장 submit한 value-->
+                      
+              <%= c.state %>
+              
+              </td>
+              
+              
             </td>
                
             <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#show<%=c.id%>">상세보기</button></td>
@@ -282,7 +263,6 @@
       
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id = "ok" >승인하기</button>
 
       </div>
     </div>
